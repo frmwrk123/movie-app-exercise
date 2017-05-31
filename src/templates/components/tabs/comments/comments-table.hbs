@@ -1,0 +1,20 @@
+<table class="table" id="comments-table">
+  <thead>
+    <tr>
+      <th>Movie</th>
+      <th>User</th>
+      <th>Comment</th>
+      <th>Timestamp</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#comments}}
+      <tr>
+        <td>{{movie.title}}</td>
+        <td><strong>{{ username }}</strong></td>
+        <td>{{ text }}</td>
+        <td>{{ updatedAt }}</td>
+      </tr>
+    {{/comments}}
+  </tbody>
+</table>

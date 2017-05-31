@@ -1,0 +1,78 @@
+// Bootstrap
+@import "../../node_modules/bootstrap/dist/css/bootstrap";
+@import 'typeahead';
+
+table, ul, ol {
+  margin: 0;
+  padding: 0;
+}
+
+.no-margin {
+  margin: 0;
+}
+
+#map {
+	height: 450px;
+	width: 100%;
+}
+
+.jumbotron {
+  padding: 45px 45px 60px;
+  margin-bottom: 0;
+  border-bottom: 1px solid #ddd;
+}
+
+#content {
+  margin-top: -42px;
+  padding-bottom: 30px;
+}
+
+.twitter-typeahead {
+  display: block !important;
+}
+
+.alert {
+  font-size: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#movie-tweets {
+  overflow: scroll;
+  min-height: 500px;
+}
+#movie-data-tweets {
+  position: absolute;
+  width: calc(100% - 30px);
+}
+
+.tweet {
+  border: 1px solid #ddd;
+  padding: 15px;
+  border-radius: 5px;
+  background: #f8f8f8;
+}
+
+.comment {
+  margin-top: 15px;
+  .name {
+    display: flex;
+    .date {
+      width: 204px;
+      display: block;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+  }
+  .content {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background: #f8f8f8;
+    padding: 15px;
+  }
+}
+
+.placeholder {
+  color: #999;
+}

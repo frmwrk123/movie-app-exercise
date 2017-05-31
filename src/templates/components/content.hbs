@@ -1,0 +1,41 @@
+<div id="content" class="container">
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist" id="myTab">
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="#movies" role="tab">Movies</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="#comments" role="tab">Comments</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="#tweets" role="tab">Tweets</a>
+    </li>
+    <div class="spacer" style="flex-grow:1"></div>
+    <li class="nav-item">
+      <a class="nav-link pull-right" data-toggle="tab" href="#discussion" role="tab">Discussion</a>
+    </li>
+  </ul>
+
+  <br />
+  <!-- Tab panes -->
+  <div class="tab-content">
+
+    <div class="tab-pane" id="movies" role="tabpanel">
+      {{> tabs/movies/movies }}
+    </div>
+
+    <div class="tab-pane" id="comments" role="tabpanel">
+      {{> tabs/comments/comments }}
+    </div>
+
+    <div class="tab-pane" id="tweets" role="tabpanel">
+      {{> tabs/tweets/tweets }}
+    </div>
+
+    <div class="tab-pane" id="discussion" role="tabpanel">
+      {{> tabs/disqus/disqus }}
+    </div>
+
+  </div>
+
+</div>

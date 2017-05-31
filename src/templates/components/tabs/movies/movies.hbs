@@ -1,0 +1,53 @@
+<div id="movie-search" style="display:none">
+  <div class="row">
+    <div class="col">
+      <h5>Query the Movie Database</h5>
+      <br />
+      <form>
+        <div class="form-group row">
+          <label class="col-12 col-sm-2 col-form-label" for="query-type">Query </label>
+          <div class="col-12 col-sm-10">
+            <select id="query-type" class="form-control">
+              <option value="prefix">movies by title prefix</option>
+              <option value="rating-greater">movies with a rating greater than a certain value</option>
+              <option value="genre">by genre (comma-separated)</option>
+              <option value="genrePartialmatch">movies whose genre starts with a certain character sequence</option>
+              <option value="release">movies that were released before 1950 in a certain country</option>
+              <option value="comments">movies that were commented on by a certain user</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-12 col-sm-2 col-form-label" for="parameter">Parameter </label>
+          <div class="col-12 col-sm-10">
+            <input type="text" id="parameter" class="form-control" placeholder="parameter taken by the query" autocomplete="off">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-12 col-sm-2 col-form-label" for="limit">Result Limit </label>
+          <div class="col-12 col-sm-10">
+            <input type="text" id="limit" class="form-control" value="10">
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <br />
+
+  <div class="row">
+    <div class="col">
+      <div id="table-container" style="overflow: scroll;">
+        <div class="row">
+          <div class="col">
+            <div style="padding: 60px 15px">
+              <h2 class="placeholder text-center" style="">Start searching for movies...</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="movie-data" style="display:none">
+</div>

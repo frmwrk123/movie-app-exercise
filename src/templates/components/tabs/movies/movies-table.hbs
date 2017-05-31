@@ -1,0 +1,38 @@
+<table class="table" id="movies-table">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Year</th>
+      <th>Rating</th>
+      <th>Votes</th>
+      <th>Genre</th>
+      <th>Runtime</th>
+      <th>Released in</th>
+      <th>More</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#movies}}
+      <tr>
+        <td><strong>{{title}}</strong></td>
+        <td>{{ year }}</td>
+        <td>{{ rating }}</td>
+        <td>{{ votes }}</td>
+        <td>
+          {{#with genre}}
+            {{.}}
+          {{/with}}
+        </td>
+        <td>{{ runtime }}</td>
+        <td>
+          {{#releases}}
+            {{ country }}
+          {{/releases}}
+        </td>
+        <td>
+          <button class="btn btn-success" data-title="{{title}}">Details</button>
+        </td>
+      </tr>
+    {{/movies}}
+  </tbody>
+</table>

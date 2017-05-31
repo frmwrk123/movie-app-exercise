@@ -1,0 +1,108 @@
+<div class="row">
+  <div class="col">
+    <!-- <h5><a id="backToSearch" href="">Search</a> <small>></small> {{title}}</h5> -->
+    <a id="backToSearch" href="">< Back to search</a>
+  </div>
+</div>
+<br />
+<br />
+<div class="row align-items-stretch">
+  <div id="movie-data" class="col">
+    <div class="row">
+      <div class="col col-sm-auto" style="text-align:center;flex-basis: 0;">
+        <img src="../../../../img/poster.png" id="{{key}}" style="max-width: 210px;margin-bottom:30px;"/>
+        <br />
+      </div>
+      <div class="col" style="overflow: hidden;">
+        <table class="table">
+          <tr>
+            <th>Title</th>
+            <td>
+              {{title}}
+            </td>
+          </tr>
+          <tr>
+            <th>Year</th>
+            <td>
+              {{year}}
+            </td>
+          </tr>
+
+          <tr>
+            <th>Rating</th>
+            <td>
+              {{rating}}
+            </td>
+          </tr>
+
+          <tr>
+            <th>Votes</th>
+            <td>
+              {{votes}}
+            </td>
+          </tr>
+
+          <tr>
+            <th>Runtime</th>
+            <td>
+              {{runtime}} minutes
+            </td>
+          </tr>
+
+          <tr>
+            <th>Genre</th>
+            <td>
+              {{genre}}
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <table class="table" id="movie-table-list">
+      <tr>
+        <th>Plot</th>
+        <td>
+          {{plot}}
+        </td>
+      </tr>
+
+      <tr>
+        <th>Actors</th>
+        <td>
+          <ul>
+            {{#actors}}
+              <li>{{.}}</li>
+            {{/actors}}
+          </ul>
+        </td>
+      </tr>
+
+    	<tr>
+        <th>Releases</th>
+        <td>
+          <ul>
+            {{#releases}}
+              <li>{{country}} : {{date.$date}}</li>
+            {{/releases}}
+          </ul>
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div id="movie-tweets" class="col-12 col-md-4">
+    <div id="movie-data-tweets">
+      <h2 class="placeholder text-center">
+    		No Tweets found
+    	</h2>
+    </div>
+  </div>
+</div>
+
+<hr />
+<br />
+<h4>Comments</h4>
+<div class="row">
+  <div id="movie-data-comments" class="col">
+  </div>
+</div>

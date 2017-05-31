@@ -1,0 +1,53 @@
+<div class="row">
+  <div class="col">
+    <h5>Query Tweets</h5>
+    <br />
+    <form>
+      <div class="form-group row">
+        <label class="col-12 col-sm-2 col-form-label" for="query-type-tweet">Query </label>
+        <div class="col-12 col-sm-10">
+          <div class="row">
+            <div class="col">
+              <select id="query-type-tweet" class="form-control">
+                <option value="prefix">tweets by prefix</option>
+                <option value="keyword">tweets that contain a particular word</option>
+                <option value="followersOrFriends">all tweets that were issued by a user with more than n friends or followers</option>
+              </select>
+            </div>
+            <!-- <div class="col col-auto">
+              <button id="go-tweet" class="btn btn-success">Go</button>
+            </div> -->
+          </div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-12 col-sm-2 col-form-label" for="parameter-tweet">Parameter </label>
+        <div class="col-12 col-sm-10">
+          <input type="text" id="parameter-tweet" class="form-control" placeholder="parameter taken by the query">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-12 col-sm-2 col-form-label" for="limit-tweet">Result Limit </label>
+        <div class="col-12 col-sm-10">
+          <input type="text" id="limit-tweet" class="form-control" value="10">
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<br />
+
+<div class="row">
+  <div class="col">
+    <div id="tweet-container" style="overflow: scroll;">
+      <div class="row">
+        <div class="col">
+          <div style="padding: 60px 15px">
+            <h2 class="placeholder text-center" style="">Start searching for tweets...</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

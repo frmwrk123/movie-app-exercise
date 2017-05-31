@@ -1,0 +1,18 @@
+<table class="table" id="tweet-table">
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Tweet</th>
+      <th>Created at</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#tweets}}
+      <tr>
+        <td><strong>{{user.screen_name}}</strong></td>
+        <td>{{tweet.text}}</td>
+        <td>{{createdAt}}</td>
+      </tr>
+    {{/tweets}}
+  </tbody>
+</table>

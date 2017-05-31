@@ -1,0 +1,76 @@
+{{#if comments}}
+  {{#comments}}
+    <div class="comment" data-comment="{{.}}" data-user="{{user}}">
+      <div class="name">
+        <strong>{{ username }}</strong>
+        &nbsp;-&nbsp;
+        <span class="date">{{ createdAt }}</span>
+        <span class="edit-comment" style="display:none">
+          (<a href="">edit</a>)
+        </span>
+      </div>
+      <div class="content">
+        <div class="text">
+          {{ text }}
+        </div>
+        <form class="edit-comment-form" style="display:none">
+          <input
+            id="add-comment-name"
+            type="text"
+            class="form-control name"
+            placeholder="Name"
+            value="{{ username }}"
+            style="display:none"
+          />
+          <textarea
+            id="add-comment-text"
+            type="text"
+            class="form-control text"
+            rows="3"
+            placeholder="Enter your comment here..."
+          >{{ text }}</textarea>
+          <div class="col-auto" style="display: flex;justify-content: flex-end;margin-top: 15px;">
+            <button class="comment-button pull-right btn btn-info" type="submit">Update Comment</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  {{/comments}}
+{{else}}
+  <div class="row justify-content-center" style="padding: 30px 15px;">
+    <h2 class="placeholder">No comments yet</h2>
+  </div>
+{{/if}}
+
+<hr />
+
+<form class="add-comment">
+  <div class="form-group row">
+    <label class="col-12 col-sm-2 col-form-label" for="name">Name</label>
+    <div class="col-12 col-sm-10">
+      <input
+        id="name"
+        type="text"
+        class="form-control name"
+        placeholder="Name"
+        value="{{user.username}}"
+      />
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-12 col-sm-2 col-form-label" for="name">Text</label>
+    <div class="col-12 col-sm-10">
+      <textarea
+        id="text"
+        type="text"
+        class="form-control text"
+        rows="3"
+        placeholder="Enter your comment here..."
+      />
+    </textarea>
+  </div>
+
+  <div class="col" style="display: flex;justify-content: flex-end;margin-top: 15px;">
+    <button class="comment-button pull-right btn btn-info" type="submit">Add Comment</button>
+  </div>
+</form>
