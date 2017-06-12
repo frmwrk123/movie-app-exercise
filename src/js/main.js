@@ -11,29 +11,29 @@ import CommentsTab from './components/tabs/CommentsTab'
 import TweetsTab from './components/tabs/TweetsTab'
 import Login from './components/Login'
 
-const app = 'movie-app'
+const app = 'icy-sirloinsteak-446';
 db.connect(app);
 
 document.addEventListener("DOMContentLoaded", function() {
-    $("#main").html(hbs.main())
+    $("#main").html(hbs.main());
 
-    $('#myTab a').click(function(e) {
+    $('#myTab').find('a').click(function(e) {
       e.preventDefault();
       $(this).tab('show');
     });
 
     $("ul.nav-tabs > li > a").on("shown.bs.tab", function(e) {
-      e.preventDefault()
-      var id = $(e.target).attr("href").substr(1);
+      e.preventDefault();
+      let id = $(e.target).attr("href").substr(1);
       history.replaceState(null,null,'#' + id);
     });
 
     db.ready(function() {
       $('#status').html('Connected to Baqend app <strong>' + app + "</strong>");
-      MoviesTab.init()
-      CommentsTab.init()
-      TweetsTab.init()
-      Login.init()
+      MoviesTab.init();
+      CommentsTab.init();
+      TweetsTab.init();
+      Login.init();
 
       $("ul.nav-tabs > li > a[href='#movies']").on("shown.bs.tab", function(e) {
         MoviesTab.update()
@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function() {
         TweetsTab.update()
       });
 
-      $('#myTab a[href="' + (window.location.hash || '#movies') + '"]').tab('show');
+      $('#myTab').find('a[href="' + (window.location.hash || '#movies') + '"]').tab('show');
     })
 
-})
+});

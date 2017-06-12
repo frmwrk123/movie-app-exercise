@@ -26,7 +26,7 @@ class CommentService {
         let query = db.MovieComment.find()
 		.where({ 'id': { '$exists' : true } })
 		.sort({ 'id': -1 })
-		.limit(new Number(args.limit));
+		.limit(Number(args.limit));
 
         switch (args.type) {
             //TODO

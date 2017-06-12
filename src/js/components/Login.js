@@ -1,8 +1,8 @@
 import { db } from 'baqend/realtime'
 import MoviesTab from './tabs/MoviesTab'
 
-const loginButton = '<button type="button" class="btn btn-info btn-default btn-account" data-toggle="modal" data-target="#login-modal">Login</button>'
-const logoutButton = '<button type="button" class="btn btn-info btn-danger btn-account" id="button-logout">Logout</button>'
+const loginButton = '<button type="button" class="btn btn-info btn-default btn-account" data-toggle="modal" data-target="#login-modal">Login</button>';
+const logoutButton = '<button type="button" class="btn btn-info btn-danger btn-account" id="button-logout">Logout</button>';
 
 class Login {
     init() {
@@ -26,12 +26,12 @@ class Login {
     }
 
     onLogin() {
-      login.enableLogout()
+      login.enableLogout();
       MoviesTab.update(true)
     }
 
     onLogout() {
-      login.enableLogin()
+      login.enableLogin();
       MoviesTab.update(true)
     }
 

@@ -26,7 +26,7 @@ class TweetService {
     let query = db.Tweet.find()
 	.where({ 'id': { '$exists' : true } })
 	.sort({ 'id': -1 })
-	.limit(new Number(args.limit));
+	.limit(Number(args.limit));
 
     switch (args.type) {
         //TODO

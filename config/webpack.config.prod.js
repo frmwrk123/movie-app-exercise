@@ -1,10 +1,10 @@
-var webpack = require('webpack');
-var webpackMerge = require('webpack-merge');
-var ExtractTextPlugin = require("extract-text-webpack-plugin");
-var CleanWebpackPlugin = require('clean-webpack-plugin');
-var path = require("path");
+const webpack = require('webpack');
+const webpackMerge = require('webpack-merge');
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+const path = require("path");
 
-var config = require('./webpack.config.base.js');
+const config = require('./webpack.config.base.js');
 
 module.exports = webpackMerge(config, {
   plugins: [

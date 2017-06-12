@@ -40,7 +40,7 @@ class MovieService {
         let query = db.Movie.find()
 		.where({ 'id': { '$exists' : true } })
 		.sort({ 'id': -1 })
-		.limit(new Number(args.limit));
+		.limit(Number(args.limit));
 
         switch (args.type) {
             //TODO
