@@ -36,6 +36,7 @@
     "bootstrap": "next",
     "clean-webpack-plugin": "^0.1.16",
     "lodash": "^4.17.4",
+    "tether": "^1.4.0",
     "webpack-merge": "^4.1.0"
   }
 }
