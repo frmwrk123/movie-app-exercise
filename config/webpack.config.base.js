@@ -75,7 +75,7 @@ module.exports = {
     new webpack.ProvidePlugin({
       $: 'jquery',
       jQuery: 'jquery',
-      Tether: 'Tether'
+      tether: 'tether'
     }),
     new ExtractTextPlugin({
       filename: "css/[hash].css",
