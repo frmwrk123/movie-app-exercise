@@ -11,7 +11,7 @@ import CommentsTab from './components/tabs/CommentsTab'
 import TweetsTab from './components/tabs/TweetsTab'
 import Login from './components/Login'
 
-const app = 'icy-sirloinsteak-446';
+const app = 'movie-app';
 db.connect(app);
 
 document.addEventListener("DOMContentLoaded", function() {
