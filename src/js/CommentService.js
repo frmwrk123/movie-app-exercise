@@ -7,12 +7,12 @@ class CommentService {
      * @param {Object} [movie] The reference to the movie object
      */
     streamComments(movie) {
-        //TODO
         let query = db.MovieComment.find()
             .where({ 'id': { '$exists' : true } })
-			.sort({ 'id': -1 });
+			.sort({ 'createdAt': -1 });
+        query.equal("movie", movie);
 
-        return query.resultStream()
+        return query.resultStream();
     }
 
     /**
@@ -25,11 +25,16 @@ class CommentService {
     queryComments(args) {
         let query = db.MovieComment.find()
 		.where({ 'id': { '$exists' : true } })
-		.sort({ 'id': -1 })
+		.sort({'createdAt': -1 })
 		.limit(Number(args.limit));
 
         switch (args.type) {
-            //TODO
+            case "prefix":
+                query.matches("username", new RegExp("^" + args.parameter));
+                break;
+            case "keyword":
+                query.matches("text", new RegExp("^.*" + args.parameter));
+                break;
         }
 
         return query.resultList({depth: 1}); // with depth: 1, the referenced movies will be loaded
@@ -43,18 +48,22 @@ class CommentService {
      * @param {string} [comment.text] The comment text
      */
     addComment(movie, comment) {
-        //TODO
-        alert("Comment adding not implemented, yet!");
+        let newComment = new db.MovieComment({
+            username: comment.username,
+            text: comment.text,
+            movie: movie
+        });
+        return newComment.insert();
     }
 
     /**
-     * Returns a comment stream for a movie
+     * Edits a comment for a movie
      * @param {Object} [comment] The reference to the old comment object
      * @param {String} [newText] The new text
      */
     editComment(comment, newText) {
-        //TODO
-        alert("Comment editing not implemented, yet!");
+        comment.text = newText;
+        return comment.update();
     }
 
 }

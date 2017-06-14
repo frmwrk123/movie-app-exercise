@@ -1,4 +1,4 @@
-import { db } from 'baqend/realtime'
+import {db} from 'baqend/realtime'
 
 class MovieService {
 
@@ -9,8 +9,8 @@ class MovieService {
     loadMovieSuggestions(title) {
         //TODO
         let query = db.Movie.find()
-            .where({ 'id': { '$exists' : true } })
-			.sort({ 'id': -1 })
+            .where({'id': {'$exists': true}})
+            .sort({'id': -1})
             .limit(10);
 
         return query.resultList((results) => results.map((result) => result.title));
@@ -21,10 +21,10 @@ class MovieService {
      * @param {string} [title] The movie title
      */
     loadMovieByTitle(title) {
-        //TODO
         let query = db.Movie.find()
-            .where({ 'id': { '$exists' : true } })
-			.sort({ 'id': -1 });
+            .where({'id': {'$exists': true}})
+            .sort({'id': -1});
+        query.equal("title", title);
 
         return query.singleResult();
     }
@@ -38,12 +38,38 @@ class MovieService {
      */
     queryMovies(args) {
         let query = db.Movie.find()
-		.where({ 'id': { '$exists' : true } })
-		.sort({ 'id': -1 })
-		.limit(Number(args.limit));
+            .where({'id': {'$exists': true}})
+            .descending('id')
+            .limit(Number(args.limit));
 
         switch (args.type) {
             //TODO
+            case "prefix":
+                query.matches("title", new RegExp('^' + args.parameter));
+                break;
+            case "rating-greater":
+                query.greaterThan("rating", Number(args.parameter));
+                break;
+            case "genre":
+                query.in("genre", args.parameter);
+                break;
+            case "genrePartialmatch":
+                query.matches("genre", new RegExp('^' + args.parameter));
+                break;
+            case "release":
+                // TODO
+                query.where({"releases": {
+                    $elemMatch: {
+                        country: args.parameter,
+                        //date: { $lt : Date.UTC(1950, 0, 1, 0, 0) }
+                        //"date.$date": { $lt : 1576800000000 }
+                    }
+                }});
+                //query.lessThan("year", 1950);
+                break;
+            case "comments":
+                //TODO
+                break;
         }
 
         return query.resultList();
