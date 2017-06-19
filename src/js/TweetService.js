@@ -9,7 +9,7 @@ class TweetService {
     streamMovieTweets(movie) {
         let query = db.Tweet.find()
             .where({'id': {'$exists': true}})
-            .sort({'id': -1})
+            .sort({'createdAt': -1})
             .limit(10);
         query.matches("text", new RegExp('^.*' + movie.title.toLowerCase()));
         return query.resultStream()
@@ -25,7 +25,7 @@ class TweetService {
     queryTweets(args) {
         let query = db.Tweet.find()
             .where({'id': {'$exists': true}})
-            .sort({'id': -1})
+            .sort({'createdAt': -1})
             .limit(Number(args.limit));
 
         switch (args.type) {
