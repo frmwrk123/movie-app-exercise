@@ -75,6 +75,12 @@ class MovieService {
                 //query.lessThan("year", 1950);
                 break;
             case "comments":
+                let comments = db.MovieComment.find({"movie": 1})
+                    .where({'id': {'$exists': true}})
+                    .descending('createdAt');
+                comments.equal("username", args.parameter);
+                let interestingComments = comments.resultList();
+                query.in("_id", interestingComments);
                 //TODO
                 break;
         }
