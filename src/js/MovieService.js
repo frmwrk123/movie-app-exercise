@@ -43,28 +43,35 @@ class MovieService {
             .limit(Number(args.limit));
 
         switch (args.type) {
-            //TODO
             case "prefix":
-                query.matches("title", new RegExp('^' + args.parameter));
+                if (args.parameter !== "")
+                    query.matches("title", new RegExp('^' + args.parameter));
                 break;
             case "rating-greater":
-                query.greaterThan("rating", Number(args.parameter));
+                if (args.parameter !== "")
+                    query.greaterThan("rating", Number(args.parameter));
                 break;
             case "genre":
-                query.in("genre", args.parameter);
+                if (args.parameter !== "")
+                    query.in("genre", args.parameter);
                 break;
             case "genrePartialmatch":
-                query.matches("genre", new RegExp('^' + args.parameter));
+                if (args.parameter !== "")
+                    query.matches("genre", new RegExp('^' + args.parameter));
                 break;
             case "release":
                 // TODO
-                query.where({"releases": {
-                    $elemMatch: {
-                        country: args.parameter,
-                        //date: { $lt : Date.UTC(1950, 0, 1, 0, 0) }
-                        //"date.$date": { $lt : 1576800000000 }
-                    }
-                }});
+                if (args.parameter !== "") {
+                    query.where({
+                        "releases": {
+                            $elemMatch: {
+                                country: args.parameter,
+                                //date: { $lt : Date.UTC(1950, 0, 1, 0, 0) }
+                                //"date.$date": { $lt : 1576800000000 }
+                            }
+                        }
+                    });
+                }
                 //query.lessThan("year", 1950);
                 break;
             case "comments":
