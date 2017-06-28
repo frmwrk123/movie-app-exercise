@@ -41,6 +41,7 @@ class MovieService {
             .where({'id': {'$exists': true}})
             .descending('id')
             .limit(Number(args.limit));
+        let genres = args.parameter.split(",");
 
         switch (args.type) {
             case "prefix":
@@ -53,7 +54,7 @@ class MovieService {
                 break;
             case "genre":
                 if (args.parameter !== "")
-                    query.in("genre", args.parameter);
+                    query.where({"genre": {"$all": genres} });
                 break;
             case "genrePartialmatch":
                 if (args.parameter !== "")
@@ -62,15 +63,12 @@ class MovieService {
             case "release":
                 // TODO
                 if (args.parameter !== "") {
-                    query.where({
-                        "releases": {
-                            $elemMatch: {
-                                country: args.parameter,
-                                //date: { $lt : Date.UTC(1950, 0, 1, 0, 0) }
-                                //"date.$date": { $lt : 1576800000000 }
-                            }
-                        }
-                    });
+                    query.where(
+                        {"$and": [
+                            {"releases.country": args.parameter},
+                            {"year": {"$lt" : "1950"}}
+                            ]}
+                    );
                 }
                 //query.lessThan("year", 1950);
                 break;
